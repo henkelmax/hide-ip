@@ -26,7 +26,6 @@ public abstract class DisconnectedScreenMixin {
     protected void injected(CallbackInfo ci) {
         if (reason instanceof TranslatableComponent tc) {
             reason = new TranslatableComponent(tc.getKey(), Arrays.stream(tc.getArgs()).map(Object::toString).map(this::censorString).toArray());
-            System.out.println(Arrays.toString(tc.getArgs()));
         } else if (reason instanceof TextComponent tc) {
             reason = new TextComponent(censorString(tc.getText()));
         }
